@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="hsp.js"></script>
+    <script src="sha.js"></script>
+    <script src="parameters.js"></script>
+  </head>
+  <body>
+    <script>
+        hsp.init({useTheme: true});
+      
+      function attachImage(url) {
+        var timestamp = Math.floor(Date.now() / 1000)
+        var token = SHA512(GetURLParameter('uid') + timestamp + url + 'abcdef')
+        hsp.attachFileToMessageV2({
+          url: url,
+          name: 'abc.jpg',
+          extension: 'jpg',
+          timestamp: timestamp,
+          token: token
+        }); 
+      }
+
+      </script>
+<img src="https://i.imgur.com/cvzg34H.jpg" onclick='attachImage("https://i.imgur.com/cvzg34H.jpg");'>
+  </body>
+</html>
